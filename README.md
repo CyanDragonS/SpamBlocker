@@ -27,7 +27,7 @@ Table of Contents
 # Target Audience
 - :white_check_mark: For people who are more inclined to reject unknown calls
 - For those who need to answer unknown calls, for example, salesmen or lawyers, etc:
-  - :white_check_mark: If your carrier supports STIR attestation and it works well for you
+  - :white_check_mark: If your carrier supports STIR/SHAKEN attestation and it works well for you
   - :x: Otherwise, consider other blockers that rely on spam database
 
 # How it works
@@ -41,34 +41,35 @@ It works without replacing your default Call/SMS app.
 
 # Features:
 
-| Filter   | It checks                                       |
-| ----     | ----                                            |
-| Contacts | Whether from a contact                     |
-| STIR     | STIR attestation                                |
-| Repeated | Whether the number has been calling repeatedly  |
-| Dialed   | Whether the number has been dialed |
-| Recent Apps | If some specific apps have been used recently, all calls are allowed.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund.|
-| Off Time  | A time period that always permits calls, usually no spams at night. |
+| Filter        | It checks                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Contacts      | Whether from a contact                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| STIR/SHAKEN   | STIR/SHAKEN attestation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Repeated      | Whether the number has been calling repeatedly                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Dialed        | Whether the number has been dialed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Recent Apps   | If some specific apps have been used recently, all calls are allowed.<br>Use case:<br>&emsp; You ordered Pizza online and soon they call you to refund.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Off Time      | A time period that always permits calls, usually no spams at night.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Regex Pattern | Some typical patterns:<br> - Any number: `.*` (the regex `.*` is equivalent to the wildcard `*` in many other apps) <br> - Exact number: `12345` <br> - Starts with 400: `400.*` <br> - Ends with 123: `.*123` <br> - Shorter than 5: `.{0,4}` <br> - Longer than 10: `.{11,}` <br> - Unknown number (it's empty string): `.{0}` or `^$`<br>  - Contains "verification": `.*verification.*` <br> - Contains any of the words: `.*(police\|hospital\|verification).*` <br> - Starts with 400, with leading country code 11 or not: `(?:11)?400.*` <br>- Extract verification code from SMS message: `code.*?(\d+)`<br><br> Ask AI to generate or explain a regex: <br>&emsp; "Show me regex for checking if a string starts with 400 or 200"<br> &emsp; Results in `(400\|200).*` |
 
 
 # Permissions 
 
-| Permission (all optional)   | Why                                                             |
-| ----                   | ----                                                            |
-| ANSWER_PHONE_CALLS     | Reject, Answer and Hang-up calls                                |
-| POST_NOTIFICATIONS     | Show notifications                                              |
-| READ_CONTACTS          | For matching contacts                                           |
-| RECEIVE_SMS            | For receiving new messages                                      |
-| READ_CALL_LOG<br>READ_SMS | For feature: Repeated Call/Dialed (check if it's repeated)   |
-| PACKAGE_USAGE_STATS    | For feature: Recent Apps <br>For checking whether an app has been used recently  |
-| READ_PHONE_STATE       | For block mode: Answer + Hang-up (monitor ringing state)  |
+| Permission (all optional) | Why                                                                             |
+|---------------------------|---------------------------------------------------------------------------------|
+| ANSWER_PHONE_CALLS        | Reject, Answer and Hang-up calls                                                |
+| POST_NOTIFICATIONS        | Show notifications                                                              |
+| READ_CONTACTS             | For matching contacts                                                           |
+| RECEIVE_SMS               | For receiving new messages                                                      |
+| READ_CALL_LOG<br>READ_SMS | For feature: Repeated Cwall/Dialed (check if it's repeated)                     |
+| PACKAGE_USAGE_STATS       | For feature: Recent Apps <br>For checking whether an app has been used recently |
+| READ_PHONE_STATE          | For block mode: Answer + Hang-up (monitor ringing state)                        |
 
 # Privacy
  No data collection
  - No internet access, works completely offline.
  - No external storage access, only accessable to scoped storage(the Downloads folder).
  - No communication with other app
+ - [Reproducible](https://f-droid.org/docs/Reproducible_Builds/) apk
 
 # Support
  - Most problems have already been discussed in the issue list, please search first.

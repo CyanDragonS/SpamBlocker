@@ -32,8 +32,8 @@ android {
         applicationId = "spam.blocker"
         minSdk = 29
         targetSdk = 35
-        versionCode = 120
-        versionName = "1.20"
+        versionCode = 200
+        versionName = "2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -86,6 +86,7 @@ dependencies {
 
     // jetbrains kotlinx
     implementation(libs.serialization.json) // for backup/restore json serialization
+    implementation(libs.androidx.work.runtime.ktx) // for clearing db everyday
 
     // jetpack compose
     implementation(platform(libs.compose.bom)) // auto compose version control
